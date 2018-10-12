@@ -75,8 +75,6 @@ namespace TestConsole
                 FakeMediatorPublish(domainEvent);
         }
 
-        #endregion
-
         public static void TestJsonSerialize()
         {
             var email = new EmailRequest()
@@ -96,17 +94,19 @@ namespace TestConsole
             Console.WriteLine(email.ToJson());
         }
 
+        #endregion
+
         public static void TestTimeRange()
         {
-            var selectTime = new TimeBlock(new DateTime(2018, 10, 10, 09, 00, 0), TimeSpan.FromMinutes(30));
+            var selected = new TimeBlock(new DateTime(2018, 10, 10, 09, 00, 0), TimeSpan.FromMinutes(30));
             var candidate = new List<TimeRange>
             {
                 new TimeRange(new DateTime(2018, 10, 10, 08, 00, 0), TimeSpan.FromMinutes(30)),
                 new TimeRange(new DateTime(2018, 10, 10, 09, 30, 0), TimeSpan.FromMinutes(30)),
             };
-            var result = candidate.Min(t => Math.Abs(t.Start.CompareTo(selectTime.Start)));
+            var result = candidate.Min(t => Math.Abs(t.Start.CompareTo(selected.Start)));
 
-            Console.WriteLine($"Selected: {selectTime}");
+            Console.WriteLine($"Selected: {selected}");
             Console.WriteLine($"Candidate: {string.Join(",",candidate)}");
             Console.WriteLine($"Result: {result}");
         }
