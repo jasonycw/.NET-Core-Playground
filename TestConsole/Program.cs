@@ -1,10 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using Itenso.TimePeriod;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Threading;
-using Itenso.TimePeriod;
 using TestConsole.Common;
 using TestConsole.Domain.Core;
 using TestConsole.Domain.Test;
@@ -68,11 +67,16 @@ namespace TestConsole
 
             Console.WriteLine($"---- test1 event count: {test1.Events.Count}");
             foreach (var domainEvent in test1.Events)
+            {
                 FakeMediatorPublish(domainEvent);
+            }
+
             Console.WriteLine();
             Console.WriteLine($"---- Event2 count: {test2.Events.Count}");
             foreach (var domainEvent in test2.Events)
+            {
                 FakeMediatorPublish(domainEvent);
+            }
         }
 
         public static void TestJsonSerialize()
@@ -109,7 +113,7 @@ namespace TestConsole
             var result = candidate.OrderBy(t => t.Start.Subtract(selected.Start).Duration()).FirstOrDefault();
 
             Console.WriteLine($"Selected: {selected}");
-            Console.WriteLine($"Candidate: {string.Join(",",candidate)}");
+            Console.WriteLine($"Candidate: {string.Join(",", candidate)}");
 
             foreach (var t in candidate)
             {
