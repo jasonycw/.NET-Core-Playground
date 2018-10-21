@@ -123,9 +123,39 @@ namespace TestConsole
             Console.WriteLine($"Result: {result}");
         }
 
+        public static void TestTimeGap()
+        {
+            var schedule = new TimeBlock(new DateTime(2018, 10, 10, 08, 30, 00), TimeSpan.FromMinutes(180));
+            var bookings = new TimePeriodCollection
+            {
+                new TimeRange(new DateTime(2018, 10, 10, 08, 00, 0), TimeSpan.FromMinutes(60)),
+                new TimeRange(new DateTime(2018, 10, 10, 09, 30, 0), TimeSpan.FromMinutes(30)),
+                new TimeRange(new DateTime(2018, 10, 10, 10, 00, 0), TimeSpan.FromMinutes(30)),
+            };
+            var selected = new TimeBlock(new DateTime(2018, 10, 10, 09, 30, 0), TimeSpan.FromMinutes(30));
+            Console.WriteLine($"Selected: {selected}");
+
+            // calculate the gaps using the time calendar as period mapper
+            var gapCalculator = new TimeGapCalculator<TimeRange>();
+            var freeTimes = gapCalculator.GetGaps(bookings, schedule);
+            foreach (var t in freeTimes)
+            {
+                Console.WriteLine($"freeTimes: {t}");
+            }
+
+            var result = freeTimes.Where(t => t.Duration >= selected.Duration);
+            
+            foreach (var t in result)
+            {
+                Console.WriteLine($"Result: {t}");
+            }
+
+            //Console.WriteLine($"Result: {result}");
+        }
+
         private static void Main(string[] args)
         {
-            TestTimeRange();
+            TestTimeGap();
             Console.ReadKey();
         }
     }
