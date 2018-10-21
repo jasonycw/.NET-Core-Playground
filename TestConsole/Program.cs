@@ -125,14 +125,14 @@ namespace TestConsole
 
         public static void TestTimeGap()
         {
-            var schedule = new TimeBlock(new DateTime(2018, 10, 10, 08, 30, 00), TimeSpan.FromMinutes(180));
+            var schedule = new TimeBlock(new DateTime(2018, 10, 10, 08, 30, 00), Duration.Minutes(180));
             var bookings = new TimePeriodCollection
             {
-                new TimeRange(new DateTime(2018, 10, 10, 08, 00, 0), TimeSpan.FromMinutes(60)),
-                new TimeRange(new DateTime(2018, 10, 10, 09, 30, 0), TimeSpan.FromMinutes(30)),
-                new TimeRange(new DateTime(2018, 10, 10, 10, 00, 0), TimeSpan.FromMinutes(30)),
+                new TimeRange(new DateTime(2018, 10, 10, 08, 00, 0), Duration.Minutes(60)),
+                new TimeRange(new DateTime(2018, 10, 10, 09, 30, 0), Duration.Minutes(30)),
+                new TimeRange(new DateTime(2018, 10, 10, 10, 00, 0), Duration.Minutes(30)),
             };
-            var selected = new TimeBlock(new DateTime(2018, 10, 10, 09, 30, 0), TimeSpan.FromMinutes(30));
+            var selected = new TimeBlock(new DateTime(2018, 10, 10, 09, 30, 0), Duration.Minutes(30));
             Console.WriteLine($"Selected: {selected}");
 
             // calculate the gaps using the time calendar as period mapper
