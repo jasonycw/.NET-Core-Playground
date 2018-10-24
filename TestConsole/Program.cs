@@ -7,17 +7,31 @@ namespace TestConsole
 {
     internal class Program
     {
-        public static void TestDateTime()
+        public static void TestTimeGap()
         {
-            var startTime = new DateTime(2018, 10, 24, 10, 30, 00);
-            var endTime = new DateTime(2018, 10, 24, 10, 00, 00);
-            var duration = startTime - endTime;
-            Console.WriteLine(duration);
+            var schedule = new TimeBlock(new DateTime(2018, 10, 10, 08, 30, 00), Duration.Minutes(180));
+            var bookings = new TimePeriodCollection
+            {
+                new TimeRange(new DateTime(2018, 10, 10, 08, 00, 0), Duration.Minutes(60)),
+                new TimeRange(new DateTime(2018, 10, 10, 09, 30, 0), Duration.Minutes(30)),
+                new TimeRange(new DateTime(2018, 10, 10, 10, 00, 0), Duration.Minutes(30)),
+            };
+            var selected = new TimeBlock(new DateTime(2018, 10, 10, 09, 30, 0), Duration.Minutes(30));
+            Console.WriteLine($"Selected: {selected}");
+            Console.WriteLine();
+
+            // calculate the gaps using the time calendar as period mapper
+            var availableTimes = new TimeGapCalculator<TimeBlock>()
+                .GetGaps(bookings, schedule)
+                .Where(t => t.Duration >= selected.Duration)
+                .SelectMany(t => t.Split(selected.Duration));
+            foreach (var t in availableTimes)
+                Console.WriteLine($"Result: {t}");
         }
 
         private static void Main(string[] args)
         {
-            TestDateTime();
+            TestTimeGap();
             Console.ReadKey();
         }
     }
