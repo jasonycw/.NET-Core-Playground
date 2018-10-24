@@ -29,9 +29,18 @@ namespace TestConsole
                 Console.WriteLine($"Result: {t}");
         }
 
+        public static void TestTimeRange()
+        {
+            var timeRange = new TimeRange(new DateTime(2018, 11, 22, 10, 15, 00), Duration.Minutes(30));
+
+            timeRange.ExpandStartTo(new DateTime(2018, 11, 22, 10, 14, 00));
+
+            Console.WriteLine($"Result: {timeRange}");
+        }
+
         private static void Main(string[] args)
         {
-            TestTimeGap();
+            TestTimeRange();
             Console.ReadKey();
         }
     }
