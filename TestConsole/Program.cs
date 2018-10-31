@@ -12,10 +12,9 @@ namespace TestConsole
         public static void TestJson()
         {
             var test = JsonConvert.SerializeObject(new JsonObject {NeedToAddPrefix = 123});
-
-            var result = JsonConvert.DeserializeObject<JsonObject>(test);
-
             Console.WriteLine(test);
+            var result = JsonConvert.DeserializeObject<JsonObject>(test);
+            Console.WriteLine(result.NeedToAddPrefix);
         }
 
         private static void Main(string[] args)
