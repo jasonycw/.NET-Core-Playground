@@ -9,12 +9,21 @@ using TestConsole.Domain.Core;
 using TestConsole.Domain.Test;
 using TestConsole.Domain.Test.Events;
 using TestConsole.Domain.Test.Handler;
+using TestConsole.TestJson;
 using TestConsole.TestNamespace.Some.AnotherFunction;
 
 namespace TestConsole
 {
     internal class OldTest
     {
+        public static void TestJson()
+        {
+            var test = JsonConvert.SerializeObject(new JsonObject {NeedToAddPrefix = 123});
+            Console.WriteLine(test);
+            var result = JsonConvert.DeserializeObject<JsonObject>(test);
+            Console.WriteLine(result.NeedToAddPrefix);
+        }
+
         public static void TestTimeRange2()
         {
             var timeRange = new TimeRange(new DateTime(2018, 11, 22, 10, 15, 00), Duration.Minutes(30));

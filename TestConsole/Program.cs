@@ -9,17 +9,17 @@ namespace TestConsole
 {
     internal class Program
     {
-        public static void TestJson()
+        public static void TestCalculation()
         {
-            var test = JsonConvert.SerializeObject(new JsonObject {NeedToAddPrefix = 123});
-            Console.WriteLine(test);
-            var result = JsonConvert.DeserializeObject<JsonObject>(test);
-            Console.WriteLine(result.NeedToAddPrefix);
+            var totalCount = 5;
+            var size = 2;
+            int count = (totalCount - 1) / size + 1;
+            Console.WriteLine(count);
         }
 
         private static void Main(string[] args)
         {
-            TestJson();
+            TestCalculation();
             Console.ReadKey();
         }
     }
