@@ -1,3 +1,4 @@
 .vs/
 TestConsole/obj/
 TestConsole/bin/
+*.csproj.user
