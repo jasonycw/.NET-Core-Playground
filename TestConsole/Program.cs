@@ -7,7 +7,7 @@ using TestConsole.TestJson;
 
 namespace TestConsole
 {
-	//Test
+	//Test2
     internal class Program
     {
         public static void TestCalculation()
