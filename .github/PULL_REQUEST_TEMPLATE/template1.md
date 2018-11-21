@@ -1,3 +1,9 @@
+---
+name: Template 1
+about: Just add a quick reminder
+
+---
+
 <!-- 
 Please enter each Issue number you are resolving in your PR
 e.g. 
