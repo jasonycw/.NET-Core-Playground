@@ -1,5 +1,5 @@
 ---
-name: .Test
+name: Test
 about: Test issue template
 
 ---
