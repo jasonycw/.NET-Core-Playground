@@ -5,6 +5,8 @@
 <img alt="Build status" src="https://ci.appveyor.com/api/projects/status/03o3v957am3xrtu4?svg=true" />
 </a>
 
+[![Build Status](https://dev.azure.com/jasonycw/Test/_apis/build/status/Test-ASP.NET-CI)](https://dev.azure.com/jasonycw/Test/_build/latest?definitionId=1)
+
 Testing concept, C#, .NET Core, library, etc
 
 [![](https://codescene.io/projects/3751/status.svg) Get more details at **codescene.io**.](https://codescene.io/projects/3751/jobs/latest-successful/results)
