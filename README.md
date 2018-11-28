@@ -6,3 +6,5 @@
 </a>
 
 Testing concept, C#, .NET Core, library, etc
+
+[![](https://codescene.io/projects/3751/status.svg) Get more details at **codescene.io**.](https://codescene.io/projects/3751/jobs/latest-successful/results)
